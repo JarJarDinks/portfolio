@@ -1,0 +1,322 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #393E46;
+    background-color: #F2E7D5;
+    margin: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* this is for the header */
+.page-header {
+    display: flex;
+    flex-flow: row nowrap;
+    width: auto;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.page-header__logo {    
+    display: flex;
+    width: auto;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 100;
+    height: 70px;
+    text-decoration: none;
+    color: black;
+}
+
+.main-navigation {
+    display: flex;
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-right: 10px;
+}
+.navigation-list a {
+    font-size: 1.2rem;
+}
+
+.navigation-list__item,
+.profile-link {
+    position: relative;
+    text-decoration: none;
+    color: #357b70;
+    margin-right: 10px;
+}
+
+
+.navigation-list__item:visited,
+.profile-link:visited { 
+    color: #05676e;
+}
+
+.navigation-list__item::before,
+.profile-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 4px;
+    background-color: #357b70;
+    bottom: 0;
+    left:0;
+    transform-origin: right;
+    transform: scalex(0);
+    transition: transform .3s ease-in-out;
+
+
+}
+.navigation-list__item:hover::before,
+.profile-link:hover::before {
+    transform-origin: left;
+    transform: scalex(1);
+}
+
+
+/* this is for the profile block */
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    max-width: 750px;
+    margin: auto;  
+    padding-top: 30px;
+
+}
+
+.profile-pic {
+    display: flex;
+    float: left;
+    width: auto;
+    height: 300px;
+    padding: 6px;
+    border-radius: 115px;
+}
+
+.profile-text { 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+}
+
+.profile-link {
+    display: flex;
+    padding-top: 10px;
+}
+
+.profile-paragraph { 
+    max-width: 300px;
+}
+
+/* this is for my ABOUT PAGE */
+.about {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.about-title {
+    margin-bottom: 5px;
+}
+
+.about-list  { 
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: center;
+    padding-inline-start: inherit;
+}
+
+
+/* this is for the button element */
+
+#button {
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    color: #fff;
+    background-color: #6D9886;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 2px solid rgba(0,0,0, 0.3);
+    transition: 0.2s opacity;
+}
+
+#button:is(:hover, :focus) {
+    cursor: pointer; 
+    opacity: 0.6;
+}
+
+/* the animation code for the sun*/
+@keyframes color-change {
+    0% {
+        fill: #edc655;
+    }
+    50% { 
+        fill: #fcffad;
+    }
+    100% {
+        fill: #f76414;
+    }
+}
+/* the sun animation element */
+.sun { 
+    /* this is the long way */
+    animation-duration: 4s;
+    animation-name: color-change;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+/* the animation code for the frontcloud */
+@keyframes cloud-move {
+    from {
+        transform: translate(0, 50px);
+    }
+    to { 
+        transform: translate(200px, 50px);
+    }
+}
+/* the frontcloud animation element */
+.cloud-front { 
+    /* this is the short way */
+    animation: 30s cloud-move infinite alternate linear;
+
+}
+
+/* this is the animation code for the backcloud */
+@keyframes cloud-move-reverse {
+    from { 
+        transform: translate(446px, 48px);
+    }
+    to { 
+        transform: translate(100px, 48px);
+    }
+}
+/* this is the backcloud element animation */
+.cloud-back {
+    animation: 32s cloud-move-reverse infinite  alternate linear;
+}
+
+/* this is for the page footer */
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* this is for the contact page */
+.contact-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+#contact-form {
+    display: flex;
+    flex-flow: column;
+    max-width: 224px;
+    align-items: center;
+    margin: auto;
+}
+
+#contact-form label {
+    display: flex;
+    align-self: flex-start;
+}
+
+#contact-form textarea {
+    width: 224px;
+}
+
+#contact-message { 
+    margin-top: 10px;
+}
+
+
+
+/* this is for the project page */
+.project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.project-item   {
+    background-color: #6D9886;
+    padding: 15px;
+    border-radius: 10px;
+}
+.project-item h2 {
+    padding-top: 5px;
+    margin: 0;
+}
+
+.project-item__p6 {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+}
+
+.project-item__p4 {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+@media (max-width: 500px) { 
+    .project {
+      grid-template-columns: 1fr;
+      
+    }
+  }
+
+ @media (min-width: 500px) and (max-width: 750px){
+    .project {
+      grid-template-columns: 1fr 1fr;
+    }
+  } 
+
+  @media (max-width: 750px) {
+    .project {
+      grid-gap: 10px;
+    }
+    .project-item:last-child {
+      grid-column: auto / auto;
+      grid-row: auto / auto;
+    }
+    h1 {
+      font-size: 22px;
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    .navigation-list{
+        display: flex;
+        flex-direction: column;
+    }
+    .profile { 
+        display: flex;
+        flex-direction: column;
+    }
+}

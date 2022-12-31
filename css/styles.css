@@ -1,0 +1,242 @@
+:root {
+    --background-color: #F2E7D5;
+    --links-color: #357b70;
+    --links-visited: #05676e;
+    --links-active: #489c79;
+    --sun-0: #edc655;
+    --sun-50: #fcffad;
+    --sun-100: #f76414;
+    --button-background: #6D9886;
+    --button-font-color: #fff;
+}
+
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #393E46;
+    background-color: var(--background-color);
+    margin: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.navigation-list__item,
+.profile-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--links-color);
+    margin-right: 10px;
+}
+
+.navigation-list__item:visited,
+.profile-link:visited { 
+    color: var(--links-visited);
+}
+
+.navigation-list__item::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: var(--links-color);
+    bottom: 0;
+    left:0;
+    transform-origin: right;
+    transform: scalex(0);
+    transition: transform .3s ease-in-out;
+
+
+}
+.navigation-list__item:hover::before {
+    transform-origin: left;
+    transform: scalex(1);
+}
+
+.page-header__item {
+    display: flex;
+    align-items: center;
+}
+
+.page-header {
+    display: flex;
+    max-width: 1000px;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+/* this is for the prfile block */
+.profile {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.profile-pic {
+    float: left;
+    width: 250px;
+    margin-right: 40px;
+    border-radius: 50%;
+}
+
+
+/* this is for my ABOUT PAGE */
+.about {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.about-title {
+    margin-bottom: 5px;
+}
+
+.about-list  { 
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: center;
+    padding-inline-start: inherit;
+}
+
+
+/* this is for the button element */
+
+#button {
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    color: var(--button-font-color);
+    background-color: var(--button-background);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 2px solid rgba(0,0,0, 0.3);
+    transition: 0.2s opacity;
+}
+
+#button:is(:hover, :focus) {
+    cursor: pointer; 
+    opacity: 0.6;
+}
+
+/* the animation code for the sun*/
+@keyframes color-change {
+    0% {
+        fill: var(--sun-0);
+    }
+    50% { 
+        fill: var(--sun-50);
+    }
+    100% {
+        fill: var(--sun-100);
+    }
+}
+/* the sun animation element */
+.sun { 
+    /* this is the long way */
+    animation-duration: 4s;
+    animation-name: color-change;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+/* the animation code for the frontcloud */
+@keyframes cloud-move {
+    from {
+        transform: translate(0, 50px);
+    }
+    to { 
+        transform: translate(200px, 50px);
+    }
+}
+/* the frontcloud animation element */
+.cloud-front { 
+    /* this is the short way */
+    animation: 30s cloud-move infinite alternate linear;
+
+}
+
+/* this is the animation code for the backcloud */
+@keyframes cloud-move-reverse {
+    from { 
+        transform: translate(446px, 48px);
+    }
+    to { 
+        transform: translate(100px, 48px);
+    }
+}
+/* this is the backcloud element animation */
+.cloud-back {
+    animation: 32s cloud-move-reverse infinite  alternate linear;
+}
+
+/* this is for the page footer */
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 30px;
+}
+
+
+/* this is for the project page */
+.project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.project-item   {
+    background-color: var(--background-color);
+    padding: 15px;
+}
+
+.project-item__p5 {
+    grid-column: 1/4;
+}
+
+.project-item__p5 {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+@media (max-width: 500px) { 
+    .project {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 500px) and (max-width: 750px){
+    .project {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .project {
+      grid-gap: 10px;
+    }
+    .project-item:last-child {
+      grid-column: auto / auto;
+      grid-row: auto / auto;
+    }
+    h1 {
+      font-size: 22px;
+    }
+}
