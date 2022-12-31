@@ -256,31 +256,36 @@ body {
 
 /* this is for the project page */
 .project {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    height: 500px;
 }
+
 .project-item   {
     background-color: #6D9886;
     padding: 15px;
+    margin: 5px;
     border-radius: 10px;
 }
+
 .project-item h2 {
     padding-top: 5px;
     margin: 0;
 }
 
+/* TODO: finish projects flexbox */
+.project-item__p1,
+.project-item__p2,
+.project-item__p3,
+.project-item__p4,
+.project-item__p5,
 .project-item__p6 {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    grid-row-end: 4; 
+    display: flex;
+    flex-flow: column;
 }
 
-.project-item__p4 {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    grid-row-end: 4;
-}
+
 
 @media (max-width: 500px) { 
     .project {
